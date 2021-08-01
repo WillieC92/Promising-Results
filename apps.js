@@ -1,45 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-  slowMath
-    .add(6, 2)
-    .then((sum) => {
-      console.log(`Sum of 6 and 2 is ${sum}`);
-      return slowMath.multiply(sum, 2);
-    })
-    .then((product) => {
-      console.log(`Multiply that by 2 to get ${product}`);
-      return slowMath.divide(product, 4);
-    })
-    .then((quotient) => {
-      console.log(`Divide that number by 4 to get ${quotient}`);
-      return slowMath.subtract(quotient, 3);
-    })
-    .then((difference) => {
-      console.log(`Subtract 3 from that number to get ${difference}`);
-      return slowMath.add(difference, 98);
-    })
-    .then((sum) => {
-      console.log(`Add 98 to that number to get ${sum}`);
-      return slowMath.remainder(sum, 2);
-    })
-    .then((remainder) => {
-      console.log(`The remainder after dividing by 2 is ${remainder}`);
-      return slowMath.multiply(remainder, 50);
-    })
-    .then((product) => {
-      console.log(`Add 50 to that number to get ${product}`);
-      return slowMath.remainder(product, 40);
-    })
-    .then((remainder) => {
-      console.log(`The remainder after dividing by 40 is ${remainder}`);
-      return slowMath.add(remainder, 32);
-    })
-    .then((sum) => {
-      console.log(`Add 32 to that number to get ${sum}`);
-      console.log(`The final result of these operations is ${sum}!`);
-    })
+const doMath = async () => {
+    try {
+        let wait = await slowMath.add(6, 2);
+        console.log(wait);
+        wait = await slowMath.multiply(wait, 2);
+        console.log(wait);
+        wait = await slowMath.divide(wait, 4);
+        console.log(wait);
+        wait = await slowMath.subtract(wait, 3);
+        console.log(wait);
+        wait = await slowMath.add(wait, 98);
+        console.log(wait);
+        wait = await slowMath.remainder(wait, 2);
+        console.log(wait);
+        wait = await slowMath.multiply(wait, 50)
+        console.log(wait);
+        wait = await slowMath.remainder(wait, 40);
+        console.log(wait);
+        wait = await slowMath.add(wait, 32)
+        console.log(`The final result is ${wait}`)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-    .catch((err) => {
-      console.log("There has been an issue!");
-      console.log(err);
-    });
-});
+doMath();
